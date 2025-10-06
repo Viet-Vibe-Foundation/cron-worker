@@ -1,4 +1,5 @@
-name = "cron-web-main"
+# wrangler.toml
+name = 'cron-main-web'
 main = "./src/server.js"
 
 [observability.logs]
