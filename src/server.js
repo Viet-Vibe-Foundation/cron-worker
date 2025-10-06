@@ -1,26 +1,20 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://vietvibe.org/api/";
-
 export default {
-  async fetch() {
+  async fetch(request, env, ctx) {
+    return new Response("Worker is running!", { status: 200 });
+  },
+
+  async scheduled(event, env, ctx) {
+    console.log(`Cron run at: ${new Date(event.scheduledTime).toISOString()}`);
+
     try {
-      const res = await axios.post("/webhooks/notify", {}, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      console.log("Response:", res.data);
-
-      return new Response(JSON.stringify(res.data), {
+      await axios.post("https://vietvibe.org/api/webhooks/notify", {}, {
         headers: { "Content-Type": "application/json" },
       });
+      console.log("Send success!");
     } catch (err) {
-      return new Response(
-        JSON.stringify({ error: err.message }),
-        { status: 500, headers: { "Content-Type": "application/json" } }
-      );
+      console.error("Error:", err.message);
     }
   },
 };
