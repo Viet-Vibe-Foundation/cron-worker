@@ -1,6 +1,7 @@
 # wrangler.toml
 name = 'cron-main-web'
 main = "./src/server.js"
+compatibility_date = "2025-10-06"
 
 [observability.logs]
 enabled = true
