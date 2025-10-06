@@ -1,0 +1,8 @@
+name = "cron-web-main"
+main = "./src/server.js"
+
+[observability.logs]
+enabled = true
+
+[triggers]
+crons = ["0 * * * *"]
