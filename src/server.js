@@ -1,21 +1,20 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
+import axios from "axios";
+
+const SECRET_TRUST_CLIENT = process.env.SECRET_TRUST_CLIENT;
+
+// axios.defaults.baseURL = "https://vietvibe.org/api/";
+
+// const res = await axios.post("/webhooks/notify", {
+//   data: {},
+//   headers:{
+//     'Content-Type': 'application/json',
+//     'secret': '1D1683DF674794D34E6CB956322FC'
+//   }
+// });
+
+// console.log(res.data);
 
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+console.log("SECRET_TRUST_CLIENT", SECRET_TRUST_CLIENT);
 
-app.use(cors());
-app.use(bodyParser.json());
-
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-
-
-export default app;
+export default axios;
